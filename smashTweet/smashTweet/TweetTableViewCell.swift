@@ -23,6 +23,10 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
     
+    var attributesOfHashtags = [NSForegroundColorAttributeName: UIColor.blueColor()]
+    
+    var attributesOfURLs = [NSForegroundColorAttributeName: UIColor.darkGrayColor()]
+    
     private func updateUI() {
         // reset any existing tweet information
         tweetTextLabel?.attributedText = nil
@@ -32,13 +36,22 @@ class TweetTableViewCell: UITableViewCell {
         
         // load information from tweet
         if let tweet = self.tweet {
-            tweetTextLabel?.text = tweet.text
-            if tweetTextLabel?.text != nil {
-                for _ in tweet.media {
-                    tweetTextLabel.text! += " 📷"
-                }
-            }
+            let text = tweet.text
+            
+            //tweetTextLabel?.text = tweet.text
+            //if tweetTextLabel?.text != nil {
+            //    for _ in tweet.media {
+            //        tweetTextLabel.text! += " 📷"
+            //    }
+            //}
         
+            let attributedText = NSMutableAttributedString(string: text)
+            
+            attributedText.changeKeywordsColor(tweet.hashtags, attributes: attributesOfHashtags)
+            attributedText.changeKeywordsColor(tweet.urls, attributes: attributesOfURLs)
+            
+            tweetTextLabel?.attributedText = attributedText
+    
         
         tweetScreenNameLabel?.text = "\(tweet.user)" // tweet.user.description
         
@@ -59,7 +72,15 @@ class TweetTableViewCell: UITableViewCell {
   }
 }
 
-
+private extension NSMutableAttributedString {
+    func changeKeywordsColor(keywords: [Mention], attributes: [String: AnyObject]?) {
+        if attributes != nil{
+            for keyword in keywords {
+                addAttributes(attributes!, range: keyword.nsrange)
+            }
+        }
+    }
+}
 
 
 

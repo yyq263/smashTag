@@ -17,11 +17,16 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate{
     var managedObjectContext: NSManagedObjectContext? =
         (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext // where we gonna store our database by default
     
+    var attributedText: NSAttributedString?
+    
     var tweets = [Array<Twitter.Tweet>]() {
         didSet {
+            // print("\(tweets.count)") // only 1 section
             tableView.reloadData()
         }
     }
+    
+    
     
     var searchText: String? {
         didSet{
@@ -31,6 +36,7 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate{
             title = searchText
         }
     }
+    
     
     //private var twitterRequest: Twitter.Request? {
     //    if let query = searchText where !query.isEmpty {
@@ -147,12 +153,15 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate{
         static let CellReuseIdentifier = "Tweet"
     }
     
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         let tweet = tweets[indexPath.section][indexPath.row]
         if let tweetCell = cell as? TweetTableViewCell {
             tweetCell.tweet = tweet
+            
         }
         
         return cell
