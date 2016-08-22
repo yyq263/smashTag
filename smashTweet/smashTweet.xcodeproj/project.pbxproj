@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20191E5D1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */; };
 		20538F201D5CC7DD00DA3869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20538F1F1D5CC7DD00DA3869 /* AppDelegate.swift */; };
 		20538F251D5CC7DD00DA3869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20538F231D5CC7DD00DA3869 /* Main.storyboard */; };
 		20538F271D5CC7DD00DA3869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20538F261D5CC7DD00DA3869 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOfTweetsTableViewController.swift; sourceTree = "<group>"; };
 		20538F1C1D5CC7DD00DA3869 /* smashTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smashTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20538F1F1D5CC7DD00DA3869 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20538F241D5CC7DD00DA3869 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				20D7B0231D635F4A00F2BA01 /* Core Data */,
 				20538F231D5CC7DD00DA3869 /* Main.storyboard */,
+				20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */,
 				20D7AFF51D63559000F2BA01 /* TweetersUITableViewController.swift */,
 				20D7AFF31D5F776000F2BA01 /* TweetTableViewCell.swift */,
 				20538F4D1D5CC81B00DA3869 /* tweetTableViewController.swift */,
@@ -305,6 +308,7 @@
 				20538F4E1D5CC81B00DA3869 /* tweetTableViewController.swift in Sources */,
 				20D7B0221D635C6600F2BA01 /* Tweet.swift in Sources */,
 				20D7B01A1D63581200F2BA01 /* Model.xcdatamodeld in Sources */,
+				20191E5D1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift in Sources */,
 				20D7AFF61D63559000F2BA01 /* TweetersUITableViewController.swift in Sources */,
 				20D7B0211D635C6600F2BA01 /* Tweet+CoreDataProperties.swift in Sources */,
 				20D7AFF41D5F776000F2BA01 /* TweetTableViewCell.swift in Sources */,

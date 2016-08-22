@@ -10,7 +10,7 @@ import UIKit
 import Twitter
 import CoreData
 
-class tweetTableViewController: UITableViewController, UITextFieldDelegate{
+class tweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: model
     
@@ -119,21 +119,36 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate{
                 print("\(tweetCount) Tweets")
         }
     }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "tweetersMentioningSearchTerm" {
+        if segue.identifier == Storyboard.SegueIdentifierOfTweetersMentioningSearchTerm {
             if let tweetersTVC = segue.destinationViewController as? TweetersUITableViewController {
                 tweetersTVC.mention = searchText
                 tweetersTVC.managedObjectContext = managedObjectContext
             }
         }
+        if segue.identifier == Storyboard.SegueIdentifierOfDetailedTweets {
+            if let detailedTweetsTVC = segue.destinationViewController as? DetailOfTweetsTableViewController {
+                if let selectedCell = sender as? UITableViewCell {
+                    if let selectedIndex = tableView.indexPathForCell(selectedCell) {
+                        print("aaaaa")
+                        detailedTweetsTVC.tweetItem = tweets[selectedIndex.section][selectedIndex.row]// TODO
+                    }
+                }
+            }
+        }
     }
+    
+
+    
     
     // MARk: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.delegate = self
         //searchText = "#stanford" //initial thing
         searchForTweets()
     }
@@ -151,8 +166,9 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate{
 
     private struct Storyboard {
         static let CellReuseIdentifier = "Tweet"
+        static let SegueIdentifierOfTweetersMentioningSearchTerm = "tweetersMentioningSearchTerm"
+        static let SegueIdentifierOfDetailedTweets = "DetailOfTweets"
     }
-    
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

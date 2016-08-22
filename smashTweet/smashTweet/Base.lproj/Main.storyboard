@@ -81,6 +81,7 @@
                                     <outlet property="tweetProfileImageView" destination="j1e-Gd-Ed5" id="ACd-kz-z3W"/>
                                     <outlet property="tweetScreenNameLabel" destination="Ddk-a8-hVc" id="9db-rF-2pT"/>
                                     <outlet property="tweetTextLabel" destination="Fip-mJ-7Ec" id="wyW-nv-S05"/>
+                                    <segue destination="4FY-DU-cvp" kind="show" identifier="DetailOfTweets" id="bm0-aC-iOu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -108,7 +109,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLd-hp-mby" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="-120"/>
+            <point key="canvasLocation" x="560" y="-403"/>
         </scene>
         <!--TweetersUI Table View Controller-->
         <scene sceneID="OF7-ZM-gRH">
@@ -152,7 +153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYD-IK-wpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1330" y="-120"/>
+            <point key="canvasLocation" x="1228" y="-403"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wpX-hB-rwf">
@@ -170,7 +171,51 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMp-nu-S3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-40" y="-125"/>
+            <point key="canvasLocation" x="-142" y="-408"/>
+        </scene>
+        <!--Detail Of Tweets Table View Controller-->
+        <scene sceneID="mq4-dT-PxT">
+            <objects>
+                <tableViewController id="4FY-DU-cvp" customClass="DetailOfTweetsTableViewController" customModule="smashTweet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" id="dQK-FC-OGp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailedTweets" textLabel="UxK-5j-yrs" detailTextLabel="9Hv-2q-ORW" rowHeight="64" style="IBUITableViewCellStyleSubtitle" id="Qu1-os-nyi">
+                                <rect key="frame" x="0.0" y="92" width="600" height="64"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qu1-os-nyi" id="eLL-Gw-jbH">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UxK-5j-yrs">
+                                            <rect key="frame" x="15" y="15" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Hv-2q-ORW">
+                                            <rect key="frame" x="15" y="35" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4FY-DU-cvp" id="ibI-HA-Uuf"/>
+                            <outlet property="delegate" destination="4FY-DU-cvp" id="gp0-lo-Ydw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C1K-Iq-2t8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="352"/>
         </scene>
     </scenes>
 </document>
