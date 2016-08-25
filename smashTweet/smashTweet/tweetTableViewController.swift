@@ -130,10 +130,9 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate {
         }
         if segue.identifier == Storyboard.SegueIdentifierOfDetailedTweets {
             if let detailedTweetsTVC = segue.destinationViewController as? DetailOfTweetsTableViewController {
-                if let selectedCell = sender as? UITableViewCell {
-                    if let selectedIndex = tableView.indexPathForCell(selectedCell) {
-                        print("aaaaa")
-                        detailedTweetsTVC.tweetItem = tweets[selectedIndex.section][selectedIndex.row]// TODO
+                if let selectedCell = sender as? UITableViewCell { // sender should be resolved to UITableViewCell before get the cell index(you actually select a cell)
+                    if let selectedIndex = tableView.indexPathForCell(selectedCell) { // get the indexPath of the selected cell
+                        detailedTweetsTVC.tweetItem = tweets[selectedIndex.section][selectedIndex.row]// get the selected tweet and pass it to destination view controller
                     }
                 }
             }
@@ -148,7 +147,6 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.delegate = self
         //searchText = "#stanford" //initial thing
         searchForTweets()
     }

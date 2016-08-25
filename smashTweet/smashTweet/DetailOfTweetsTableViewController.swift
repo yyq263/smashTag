@@ -9,40 +9,72 @@
 import UIKit
 import Twitter
 
-class DetailOfTweetsTableViewController: UITableViewController {
-
+class DetailOfTweetsTableViewController: UITableViewController
+{
     
+    // Data Source
+    var sectionName = [String]()
+    
+    var screenName = [String]()
+    
+    var hashTags = [String]()
+    
+    var URLs = [String]()
+    
+    var imageURLs = [MediaItem]()
+    
+    var detailedTweetArray = [AnyObject]()
     
     var tweetItem: Twitter.Tweet? {
         didSet { updateUI() }
     }
     
-    var screenName: String?
-    
-    var hashtagString = [String]()
-    
     private func updateUI() {
         if tweetItem != nil {
-            self.screenName = tweetItem!.user.screenName
-            print(screenName!)
+            // Get image URL
+            if !tweetItem!.media.isEmpty {
+                for imageURL in tweetItem!.media {
+                    imageURLs.append(imageURL)
+                }
+                detailedTweetArray.append(imageURLs)
+                sectionName.append("Image")
+            }
+            // Get hashtags
             if !tweetItem!.hashtags.isEmpty {
                 for hashtag in tweetItem!.hashtags {
-                    print(hashtag.keyword)
-                    hashtagString.append(hashtag.keyword)
+                    hashTags.append(hashtag.keyword)
                 }
+                detailedTweetArray.append(hashTags)
+                sectionName.append("Hashtag")
             }
+            // Get urls
+            if !tweetItem!.urls.isEmpty {
+                for url in tweetItem!.urls {
+                    URLs.append(url.keyword)
+                }
+                detailedTweetArray.append(URLs)
+                sectionName.append("URL")
+            }
+            // Get screenName
+            screenName.append(tweetItem!.user.screenName)
+            detailedTweetArray.append(screenName)
+            sectionName.append("Screenname")
         }
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //tableView.estimatedRowHeight = tableView.rowHeight
+        //tableView.rowHeight = UITableViewAutomaticDimension
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-//    }
+    }
 
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()
@@ -52,25 +84,65 @@ class DetailOfTweetsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        // return the number of sections
+        return  detailedTweetArray.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // return the number of rows
+        return detailedTweetArray[section].count
     }
+    
+    private func fetchImage(url: NSURL) -> UIImage? {
+        //let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+        //dispatch_async(dispatch_get_global_queue(qos, 0)) { }
+        if let imageData = NSData(contentsOfURL: url) {
+            return UIImage(data: imageData)
+        }
+        return nil
+        
+    }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("detailedTweets", forIndexPath: indexPath)
 
+        
         // Configure the cell...
-
+        if let detailedTweet = detailedTweetArray[indexPath.section] as? [String] {
+            if !detailedTweet.isEmpty {
+                cell.textLabel?.text = detailedTweet[indexPath.row]
+            }
+        }
+        
+        if let mediaItemInTweet = detailedTweetArray[indexPath.section] as? [MediaItem] {
+            cell.textLabel?.text = nil
+            if !mediaItemInTweet.isEmpty {
+                let media = mediaItemInTweet[indexPath.row]
+                if let image = fetchImage(media.url) {
+                    cell.imageView?.image = image
+                }
+            }
+        }
+        
         return cell
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if detailedTweetArray[indexPath.section] is [String] {
+            return UITableViewAutomaticDimension
+        }
+        
+        if let media = detailedTweetArray[indexPath.section][indexPath.row] as? MediaItem {
+            return (tableView.frame.size.height / CGFloat(media.aspectRatio) / 2)
+        }
+        return UITableViewAutomaticDimension
+    }
 
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionName[section]
+    }
 
     /*
     // Override to support conditional editing of the table view.
