@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:tweetImageViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:Twitter/Twitter.xcodeproj">
    </FileRef>
    <FileRef

@@ -94,39 +94,27 @@ class DetailOfTweetsTableViewController: UITableViewController
         return detailedTweetArray[section].count
     }
     
-    private func fetchImage(url: NSURL) -> UIImage? {
-        //let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-        //dispatch_async(dispatch_get_global_queue(qos, 0)) { }
-        if let imageData = NSData(contentsOfURL: url) {
-            return UIImage(data: imageData)
-        }
-        return nil
-        
-    }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("detailedTweets", forIndexPath: indexPath)
-
-        
-        // Configure the cell...
-        if let detailedTweet = detailedTweetArray[indexPath.section] as? [String] {
-            if !detailedTweet.isEmpty {
-                cell.textLabel?.text = detailedTweet[indexPath.row]
-            }
-        }
-        
-        if let mediaItemInTweet = detailedTweetArray[indexPath.section] as? [MediaItem] {
-            cell.textLabel?.text = nil
-            if !mediaItemInTweet.isEmpty {
-                let media = mediaItemInTweet[indexPath.row]
-                if let image = fetchImage(media.url) {
-                    cell.imageView?.image = image
+            // Configure the cell that displays text
+            if let detailedTweet = detailedTweetArray[indexPath.section] as? [String] {
+                let cell = tableView.dequeueReusableCellWithIdentifier("detailedTweets", forIndexPath: indexPath)
+                if !detailedTweet.isEmpty {
+                    cell.textLabel?.text = detailedTweet[indexPath.row]
                 }
+                return cell
+            } else {
+                // Configure the cell that displays images
+                let mediaItemInTweet = detailedTweetArray[indexPath.section] as! [MediaItem]
+                let cell = tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath) as! tweetImageViewCell
+                if !mediaItemInTweet.isEmpty {
+                    let url = mediaItemInTweet[indexPath.row].url
+                    cell.imageURL = url
+                }
+            return cell
             }
-        }
-        
-        return cell
+
+
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -177,27 +177,55 @@
         <scene sceneID="mq4-dT-PxT">
             <objects>
                 <tableViewController id="4FY-DU-cvp" customClass="DetailOfTweetsTableViewController" customModule="smashTweet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" id="dQK-FC-OGp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="dQK-FC-OGp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailedTweets" textLabel="UxK-5j-yrs" rowHeight="58" style="IBUITableViewCellStyleDefault" id="Qu1-os-nyi">
-                                <rect key="frame" x="0.0" y="92" width="600" height="58"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailedTweets" textLabel="UxK-5j-yrs" rowHeight="63" style="IBUITableViewCellStyleDefault" id="Qu1-os-nyi">
+                                <rect key="frame" x="0.0" y="92" width="600" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qu1-os-nyi" id="eLL-Gw-jbH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UxK-5j-yrs">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="57"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="62"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="190" id="qpU-Gk-kVJ" customClass="tweetImageViewCell" customModule="smashTweet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="155" width="600" height="190"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpU-Gk-kVJ" id="qhQ-0R-z6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="189"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1p-b4-loX">
+                                            <rect key="frame" x="8" y="8" width="584" height="173"/>
+                                        </imageView>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Gwj-of-GuK">
+                                            <rect key="frame" x="290" y="85" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="I1p-b4-loX" secondAttribute="trailing" id="2fz-KJ-fx5"/>
+                                        <constraint firstItem="Gwj-of-GuK" firstAttribute="centerY" secondItem="I1p-b4-loX" secondAttribute="centerY" id="4go-iG-1wt"/>
+                                        <constraint firstItem="I1p-b4-loX" firstAttribute="leading" secondItem="qhQ-0R-z6H" secondAttribute="leadingMargin" id="AEv-9G-KW0"/>
+                                        <constraint firstItem="Gwj-of-GuK" firstAttribute="centerX" secondItem="I1p-b4-loX" secondAttribute="centerX" id="EBb-j2-zhx"/>
+                                        <constraint firstItem="I1p-b4-loX" firstAttribute="top" secondItem="qhQ-0R-z6H" secondAttribute="topMargin" id="QIO-yB-ONw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="I1p-b4-loX" secondAttribute="bottom" id="dde-4d-3X6"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="loadingSpinner" destination="Gwj-of-GuK" id="Ddt-Iz-a85"/>
+                                    <outlet property="tweetImage" destination="I1p-b4-loX" id="MjG-Am-y28"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

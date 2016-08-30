@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20191E5D1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */; };
+		20439B581D75BDF500740955 /* tweetImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20439B571D75BDF500740955 /* tweetImageViewCell.swift */; };
 		20538F201D5CC7DD00DA3869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20538F1F1D5CC7DD00DA3869 /* AppDelegate.swift */; };
 		20538F251D5CC7DD00DA3869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20538F231D5CC7DD00DA3869 /* Main.storyboard */; };
 		20538F271D5CC7DD00DA3869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20538F261D5CC7DD00DA3869 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOfTweetsTableViewController.swift; sourceTree = "<group>"; };
+		20439B571D75BDF500740955 /* tweetImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tweetImageViewCell.swift; sourceTree = "<group>"; };
 		20538F1C1D5CC7DD00DA3869 /* smashTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smashTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20538F1F1D5CC7DD00DA3869 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20538F241D5CC7DD00DA3869 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				20D7B0231D635F4A00F2BA01 /* Core Data */,
 				20538F231D5CC7DD00DA3869 /* Main.storyboard */,
+				20439B571D75BDF500740955 /* tweetImageViewCell.swift */,
 				20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */,
 				20D7AFF51D63559000F2BA01 /* TweetersUITableViewController.swift */,
 				20D7AFF31D5F776000F2BA01 /* TweetTableViewCell.swift */,
@@ -313,6 +316,7 @@
 				20D7B0211D635C6600F2BA01 /* Tweet+CoreDataProperties.swift in Sources */,
 				20D7AFF41D5F776000F2BA01 /* TweetTableViewCell.swift in Sources */,
 				20D7B0251D646CB400F2BA01 /* CoreDataTableViewController.swift in Sources */,
+				20439B581D75BDF500740955 /* tweetImageViewCell.swift in Sources */,
 				20D7B0201D635C6600F2BA01 /* TweeterUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
