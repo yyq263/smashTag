@@ -56,7 +56,7 @@ class DetailOfTweetsTableViewController: UITableViewController
                 sectionName.append("URL")
             }
             // Get screenName
-            screenName.append(tweetItem!.user.screenName)
+            screenName.append("@" + tweetItem!.user.screenName)
             detailedTweetArray.append(screenName)
             sectionName.append("Screenname")
         }
@@ -123,7 +123,7 @@ class DetailOfTweetsTableViewController: UITableViewController
         }
         
         if let media = detailedTweetArray[indexPath.section][indexPath.row] as? MediaItem {
-            return (tableView.frame.size.height / CGFloat(media.aspectRatio) / 2)
+            return (tableView.frame.size.height / CGFloat(media.aspectRatio))
         }
         return UITableViewAutomaticDimension
     }
@@ -132,6 +132,58 @@ class DetailOfTweetsTableViewController: UITableViewController
         return sectionName[section]
     }
 
+    
+    private struct Storyboard {
+        static let SearchResultsIdentifier    = "SearchResultsIdentifier" // navigate to the new VC
+        static let ShowImageIdentifer         = "showImageIdentifier" // navigate to show image(a scroll view)
+        static let WebSegueIdentifier         = "WebSegueIdentifier" // navigate to a blank VC and open the link in safari
+    }
+    
+    // MARK: - Navigation
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool { // should we perform the segue with the identifier? --true yes, --false no
+        if identifier == Storyboard.SearchResultsIdentifier{
+            if let cell = sender as? UITableViewCell {
+                if let url = cell.textLabel?.text {
+                    if url.hasPrefix("http") {
+                        performSegueWithIdentifier(Storyboard.WebSegueIdentifier, sender: sender)
+                        return false // no because we want to connect to this link in safari
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+        if segue.identifier == Storyboard.SearchResultsIdentifier {
+            if let searchResutTVC = segue.destinationViewController as? tweetTableViewController {
+                if let cell = sender as? UITableViewCell {
+                    if let cellContents = cell.textLabel?.text{
+                        searchResutTVC.searchText = cellContents
+                    }
+                }
+            }
+        } else if segue.identifier == Storyboard.WebSegueIdentifier {
+            if let webTVC = segue.destinationViewController as? webViewController {
+                if let cell = sender as? UITableViewCell {
+                    if let url = cell.textLabel?.text{
+                        webTVC.url = url
+                    }
+                }
+            }
+        } else if segue.identifier == Storyboard.ShowImageIdentifer {
+            if let imageVC = segue.destinationViewController as? imageViewContrller {
+                if let imageCell = sender as? tweetImageViewCell {
+                    imageVC.imageURL = imageCell.imageURL  // get imageURL from the cell, no need to reload the url from 'detailedTweetArray'
+                }
+            }
+        }
+    }
+ 
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -167,14 +219,5 @@ class DetailOfTweetsTableViewController: UITableViewController
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

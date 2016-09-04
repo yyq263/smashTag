@@ -25,6 +25,8 @@
 		20D7B0211D635C6600F2BA01 /* Tweet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7B01D1D635C6600F2BA01 /* Tweet+CoreDataProperties.swift */; };
 		20D7B0221D635C6600F2BA01 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7B01E1D635C6600F2BA01 /* Tweet.swift */; };
 		20D7B0251D646CB400F2BA01 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7B0241D646CB400F2BA01 /* CoreDataTableViewController.swift */; };
+		20E7F39F1D7B121B005EBB2F /* imageViewContrller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7F39E1D7B121B005EBB2F /* imageViewContrller.swift */; };
+		20E7F3A11D7BC103005EBB2F /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7F3A01D7BC103005EBB2F /* webViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		20D7B01D1D635C6600F2BA01 /* Tweet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		20D7B01E1D635C6600F2BA01 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		20D7B0241D646CB400F2BA01 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
+		20E7F39E1D7B121B005EBB2F /* imageViewContrller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageViewContrller.swift; sourceTree = "<group>"; };
+		20E7F3A01D7BC103005EBB2F /* webViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +127,10 @@
 			children = (
 				20D7B0231D635F4A00F2BA01 /* Core Data */,
 				20538F231D5CC7DD00DA3869 /* Main.storyboard */,
-				20439B571D75BDF500740955 /* tweetImageViewCell.swift */,
+				20E7F3A01D7BC103005EBB2F /* webViewController.swift */,
+				20E7F39E1D7B121B005EBB2F /* imageViewContrller.swift */,
 				20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */,
+				20439B571D75BDF500740955 /* tweetImageViewCell.swift */,
 				20D7AFF51D63559000F2BA01 /* TweetersUITableViewController.swift */,
 				20D7AFF31D5F776000F2BA01 /* TweetTableViewCell.swift */,
 				20538F4D1D5CC81B00DA3869 /* tweetTableViewController.swift */,
@@ -313,6 +319,8 @@
 				20D7B01A1D63581200F2BA01 /* Model.xcdatamodeld in Sources */,
 				20191E5D1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift in Sources */,
 				20D7AFF61D63559000F2BA01 /* TweetersUITableViewController.swift in Sources */,
+				20E7F3A11D7BC103005EBB2F /* webViewController.swift in Sources */,
+				20E7F39F1D7B121B005EBB2F /* imageViewContrller.swift in Sources */,
 				20D7B0211D635C6600F2BA01 /* Tweet+CoreDataProperties.swift in Sources */,
 				20D7AFF41D5F776000F2BA01 /* TweetTableViewCell.swift in Sources */,
 				20D7B0251D646CB400F2BA01 /* CoreDataTableViewController.swift in Sources */,

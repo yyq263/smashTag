@@ -32,7 +32,7 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate {
         didSet{
             lastSuccessfulRequest = nil
             tweets.removeAll()
-            searchForTweets()   
+            searchForTweets()
             title = searchText
         }
     }
@@ -148,7 +148,7 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         //searchText = "#stanford" //initial thing
-        searchForTweets()
+        //searchForTweets()
     }
     
     

@@ -51,7 +51,6 @@ class TweetTableViewCell: UITableViewCell {
             attributedText.changeKeywordsColor(tweet.urls, attributes: attributesOfURLs)
             
             tweetTextLabel?.attributedText = attributedText
-    
         
         tweetScreenNameLabel?.text = "\(tweet.user)" // tweet.user.description
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AUs-Sg-fH9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AUs-Sg-fH9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -153,7 +153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYD-IK-wpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228" y="-403"/>
+            <point key="canvasLocation" x="1382" y="-403"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wpX-hB-rwf">
@@ -171,7 +171,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMp-nu-S3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="-408"/>
+            <point key="canvasLocation" x="-266" y="-403"/>
         </scene>
         <!--Detail Of Tweets Table View Controller-->
         <scene sceneID="mq4-dT-PxT">
@@ -198,6 +198,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="jgC-2g-Fln" kind="show" identifier="WebSegueIdentifier" id="j57-Qr-vch"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="190" id="qpU-Gk-kVJ" customClass="tweetImageViewCell" customModule="smashTweet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="155" width="600" height="190"/>
@@ -225,6 +228,7 @@
                                 <connections>
                                     <outlet property="loadingSpinner" destination="Gwj-of-GuK" id="Ddt-Iz-a85"/>
                                     <outlet property="tweetImage" destination="I1p-b4-loX" id="MjG-Am-y28"/>
+                                    <segue destination="8BX-th-7BM" kind="show" identifier="showImageIdentifier" id="j2x-lq-w4z"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -236,7 +240,63 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1K-Iq-2t8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-132" y="352"/>
+            <point key="canvasLocation" x="-290" y="447"/>
+        </scene>
+        <!--Image View Contrller-->
+        <scene sceneID="ThM-Mt-kIV">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bq5-fu-vjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="8BX-th-7BM" customClass="imageViewContrller" customModule="smashTweet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Igg-k3-Iw9"/>
+                        <viewControllerLayoutGuide type="bottom" id="mVX-wp-RZM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZGt-lE-Ije">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kie-q3-o1E">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Q00-2k-b1D">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q00-2k-b1D" firstAttribute="centerX" secondItem="ZGt-lE-Ije" secondAttribute="centerX" id="1aW-yR-Grn"/>
+                            <constraint firstAttribute="trailing" secondItem="kie-q3-o1E" secondAttribute="trailing" id="RG6-jo-sgw"/>
+                            <constraint firstItem="kie-q3-o1E" firstAttribute="leading" secondItem="ZGt-lE-Ije" secondAttribute="leading" id="SlR-v4-NKM"/>
+                            <constraint firstItem="Q00-2k-b1D" firstAttribute="centerY" secondItem="ZGt-lE-Ije" secondAttribute="centerY" id="ZR6-QK-blY"/>
+                            <constraint firstItem="kie-q3-o1E" firstAttribute="top" secondItem="ZGt-lE-Ije" secondAttribute="top" id="pSD-TW-pFB"/>
+                            <constraint firstItem="kie-q3-o1E" firstAttribute="bottom" secondItem="mVX-wp-RZM" secondAttribute="top" id="vmZ-lX-Rv8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="kie-q3-o1E" id="4ba-ZO-oWT"/>
+                        <outlet property="spinner" destination="Q00-2k-b1D" id="ZEg-LH-7Ia"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="552" y="431"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="hGq-c9-e3z">
+            <objects>
+                <viewController id="jgC-2g-Fln" customClass="webViewController" customModule="smashTweet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AFv-L1-yrx"/>
+                        <viewControllerLayoutGuide type="bottom" id="pLd-Ec-CbT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N4v-Zs-Fuu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HQx-b9-heX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="532" y="1198"/>
         </scene>
     </scenes>
 </document>
