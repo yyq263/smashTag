@@ -27,7 +27,6 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    
     var searchText: String? {
         didSet{
             lastSuccessfulRequest = nil
@@ -70,6 +69,7 @@ class tweetTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction private func refresh(sender: UIRefreshControl?) {
         //if let request = twitterRequest {
             //lastTwitterRequest = request
+            searchHistory().add(searchText!)
             if let request = nextRequesttoAttempt {
                 request.fetchTweets{ [weak weakSelf = self] newTweets in
                     dispatch_async(dispatch_get_main_queue()) {

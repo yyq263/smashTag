@@ -27,6 +27,8 @@
 		20D7B0251D646CB400F2BA01 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7B0241D646CB400F2BA01 /* CoreDataTableViewController.swift */; };
 		20E7F39F1D7B121B005EBB2F /* imageViewContrller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7F39E1D7B121B005EBB2F /* imageViewContrller.swift */; };
 		20E7F3A11D7BC103005EBB2F /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7F3A01D7BC103005EBB2F /* webViewController.swift */; };
+		20E7F3A31D7C1FE6005EBB2F /* searchHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7F3A21D7C1FE6005EBB2F /* searchHistoryTableViewController.swift */; };
+		20E7F3A51D7C23F0005EBB2F /* searchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7F3A41D7C23F0005EBB2F /* searchHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		20D7B0241D646CB400F2BA01 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		20E7F39E1D7B121B005EBB2F /* imageViewContrller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageViewContrller.swift; sourceTree = "<group>"; };
 		20E7F3A01D7BC103005EBB2F /* webViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
+		20E7F3A21D7C1FE6005EBB2F /* searchHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchHistoryTableViewController.swift; sourceTree = "<group>"; };
+		20E7F3A41D7C23F0005EBB2F /* searchHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 			children = (
 				20D7B0231D635F4A00F2BA01 /* Core Data */,
 				20538F231D5CC7DD00DA3869 /* Main.storyboard */,
+				20E7F3A21D7C1FE6005EBB2F /* searchHistoryTableViewController.swift */,
+				20E7F3A41D7C23F0005EBB2F /* searchHistory.swift */,
 				20E7F3A01D7BC103005EBB2F /* webViewController.swift */,
 				20E7F39E1D7B121B005EBB2F /* imageViewContrller.swift */,
 				20191E5C1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift */,
@@ -249,6 +255,7 @@
 				TargetAttributes = {
 					20538F1B1D5CC7DD00DA3869 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = Z7T2H84A78;
 					};
 					20538F2F1D5CC7DE00DA3869 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -317,6 +324,8 @@
 				20538F4E1D5CC81B00DA3869 /* tweetTableViewController.swift in Sources */,
 				20D7B0221D635C6600F2BA01 /* Tweet.swift in Sources */,
 				20D7B01A1D63581200F2BA01 /* Model.xcdatamodeld in Sources */,
+				20E7F3A31D7C1FE6005EBB2F /* searchHistoryTableViewController.swift in Sources */,
+				20E7F3A51D7C23F0005EBB2F /* searchHistory.swift in Sources */,
 				20191E5D1D68ADEF00853848 /* DetailOfTweetsTableViewController.swift in Sources */,
 				20D7AFF61D63559000F2BA01 /* TweetersUITableViewController.swift in Sources */,
 				20E7F3A11D7BC103005EBB2F /* webViewController.swift in Sources */,
@@ -469,10 +478,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = smashTweet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs183p.yao.smashTweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -480,10 +492,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = smashTweet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs183p.yao.smashTweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

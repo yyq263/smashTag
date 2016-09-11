@@ -122,7 +122,7 @@ class DetailOfTweetsTableViewController: UITableViewController
             return UITableViewAutomaticDimension
         }
         
-        if let media = detailedTweetArray[indexPath.section][indexPath.row] as? MediaItem {
+        if let media = (detailedTweetArray[indexPath.section] as? [MediaItem])![indexPath.row] as? MediaItem {
             return (tableView.frame.size.height / CGFloat(media.aspectRatio))
         }
         return UITableViewAutomaticDimension
@@ -144,6 +144,7 @@ class DetailOfTweetsTableViewController: UITableViewController
         if identifier == Storyboard.SearchResultsIdentifier{
             if let cell = sender as? UITableViewCell {
                 if let url = cell.textLabel?.text {
+                    print(url)
                     if url.hasPrefix("http") {
                         performSegueWithIdentifier(Storyboard.WebSegueIdentifier, sender: sender)
                         return false // no because we want to connect to this link in safari
